@@ -9,7 +9,7 @@ export interface IData {
 
 const data: IData[] = [
   {
-    id: 0,
+    id: 1,
     title: 'Card',
     description: 'Some description',
     category: 'Bug',
@@ -17,7 +17,7 @@ const data: IData[] = [
     priority: 'High',
   },
   {
-    id: 1,
+    id: 2,
     title: 'Card 2',
     description: 'Another description',
     category: 'Feature',
@@ -25,7 +25,7 @@ const data: IData[] = [
     priority: 'Low',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Card 3',
     description: 'Another description',
     category: 'Feature',
@@ -33,7 +33,7 @@ const data: IData[] = [
     priority: 'Low',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Card 4',
     description: 'Another description',
     category: 'Feature',
