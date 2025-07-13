@@ -91,13 +91,16 @@ function TaskDetails() {
           <Label className="font-semibold" htmlFor="category">
             Category
           </Label>
-          <Select value={category} onValueChange={(value: Category) => setCategory(value)}>
+          <Select
+            defaultValue={task!.category || ''}
+            onValueChange={(value: Category) => setCategory(value)}
+          >
             <SelectTrigger id="category" className="w-full cursor-pointer">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Status</SelectLabel>
+                <SelectLabel>Category</SelectLabel>
                 <SelectItem value="bug">Bug</SelectItem>
                 <SelectItem value="feature">Feature</SelectItem>
                 <SelectItem value="documentation">Documentation</SelectItem>
@@ -111,8 +114,11 @@ function TaskDetails() {
           <Label className="font-semibold" htmlFor="status">
             Status
           </Label>
-          <Select onValueChange={(value: Status) => setStatus(value)}>
-            <SelectTrigger defaultValue={status} id="status" className="w-full cursor-pointer">
+          <Select
+            defaultValue={task!.status || ''}
+            onValueChange={(value: Status) => setStatus(value)}
+          >
+            <SelectTrigger id="status" className="w-full cursor-pointer">
               <SelectValue placeholder="Select status" />
             </SelectTrigger>
             <SelectContent>
@@ -129,15 +135,11 @@ function TaskDetails() {
           <Label className="font-semibold" htmlFor="priority">
             Priority
           </Label>
-          <Select onValueChange={(value: Priority) => setPriority(value)}>
-            <SelectTrigger
-              defaultValue={priority}
-              id="priority"
-              className={cn(
-                'w-full cursor-pointer'
-                // !priority && 'border-red-500 ring-1 ring-red-500'
-              )}
-            >
+          <Select
+            defaultValue={task!.priority || ''}
+            onValueChange={(value: Priority) => setPriority(value)}
+          >
+            <SelectTrigger id="priority" className={'w-full cursor-pointer'}>
               <SelectValue placeholder="Select priority" />
             </SelectTrigger>
             <SelectContent>
