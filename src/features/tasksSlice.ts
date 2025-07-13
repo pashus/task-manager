@@ -1,4 +1,4 @@
-import type { IData } from '@/data/data';
+import type { IData } from '@/types/types';
 import data from '@/data/data';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 

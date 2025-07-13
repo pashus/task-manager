@@ -16,6 +16,7 @@ import { getTaskById, updateTask } from '@/features/tasksSlice';
 import type { RootState } from '@/store/store';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
+import type { Category, Priority, Status } from '@/types/types';
 
 function TaskDetails() {
   const { id } = useParams();
@@ -27,9 +28,9 @@ function TaskDetails() {
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
-  const [status, setStatus] = useState('');
-  const [priority, setPriority] = useState('');
+  const [category, setCategory] = useState<Category>('bug');
+  const [status, setStatus] = useState<Status>('todo');
+  const [priority, setPriority] = useState<Priority>('low');
 
   useEffect(() => {
     if (task) {
@@ -90,18 +91,18 @@ function TaskDetails() {
           <Label className="font-semibold" htmlFor="category">
             Category
           </Label>
-          <Select value={category} onValueChange={setCategory}>
+          <Select value={category} onValueChange={(value: Category) => setCategory(value)}>
             <SelectTrigger id="category" className="w-full cursor-pointer">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Status</SelectLabel>
-                <SelectItem value="Bug">Bug</SelectItem>
-                <SelectItem value="Feature">Feature</SelectItem>
-                <SelectItem value="Documentation">Documentation</SelectItem>
-                <SelectItem value="Refactor">Refactor</SelectItem>
-                <SelectItem value="Test">Test</SelectItem>
+                <SelectItem value="bug">Bug</SelectItem>
+                <SelectItem value="feature">Feature</SelectItem>
+                <SelectItem value="documentation">Documentation</SelectItem>
+                <SelectItem value="refactor">Refactor</SelectItem>
+                <SelectItem value="test">Test</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -110,16 +111,16 @@ function TaskDetails() {
           <Label className="font-semibold" htmlFor="status">
             Status
           </Label>
-          <Select value={status} onValueChange={setStatus}>
-            <SelectTrigger id="status" className="w-full cursor-pointer">
+          <Select onValueChange={(value: Status) => setStatus(value)}>
+            <SelectTrigger defaultValue={status} id="status" className="w-full cursor-pointer">
               <SelectValue placeholder="Select status" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Status</SelectLabel>
-                <SelectItem value="To Do">To Do</SelectItem>
-                <SelectItem value="In Progress">In Progress</SelectItem>
-                <SelectItem value="Done">Done</SelectItem>
+                <SelectItem value="todo">To Do</SelectItem>
+                <SelectItem value="inProgress">In Progress</SelectItem>
+                <SelectItem value="done">Done</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -128,24 +129,23 @@ function TaskDetails() {
           <Label className="font-semibold" htmlFor="priority">
             Priority
           </Label>
-          <Select value={priority} onValueChange={setPriority}>
+          <Select onValueChange={(value: Priority) => setPriority(value)}>
             <SelectTrigger
+              defaultValue={priority}
               id="priority"
               className={cn(
-                'w-full cursor-pointer',
-                !priority && 'border-red-500 ring-1 ring-red-500'
+                'w-full cursor-pointer'
+                // !priority && 'border-red-500 ring-1 ring-red-500'
               )}
             >
-              {' '}
-              //решить проблему с селектом и ошибкой мб
               <SelectValue placeholder="Select priority" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Priority</SelectLabel>
-                <SelectItem value="Low">Low</SelectItem>
-                <SelectItem value="Meduim">Medium </SelectItem>
-                <SelectItem value="High">High</SelectItem>
+                <SelectItem value="low">Low</SelectItem>
+                <SelectItem value="medium">Medium </SelectItem>
+                <SelectItem value="high">High</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
