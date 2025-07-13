@@ -4,7 +4,7 @@ import TaskDetails from './components/TaskDetails';
 
 function App() {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mb-4">
       <h1 className="mb-4 scroll-m-20 pt-2 text-center text-4xl font-extrabold tracking-tight text-balance">
         TASK MANAGER
       </h1>

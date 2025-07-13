@@ -58,7 +58,7 @@ function TaskDetails() {
   }
 
   return (
-    <div>
+    <div className="mx-1 sm:mx-2 lg:mx-12 xl:mx-16">
       <h2 className="mb-4 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
         Task details
       </h2>
