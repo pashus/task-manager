@@ -6,7 +6,7 @@ export interface IData {
   id: number;
   title: string;
   description: string;
-  category: Category;
-  status: Status;
-  priority: Priority;
+  category: Category | '';
+  status: Status | '';
+  priority: Priority | '';
 }

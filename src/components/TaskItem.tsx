@@ -35,20 +35,26 @@ function TaskItem({ cardData }: { cardData: IData }) {
             {cardData.description}
           </CardDescription>
         </div>
-        <div className={`rounded-md border px-1 text-sm ${priorityColor[cardData.priority]}`}>
-          <p className="leading-7 [&:not(:first-child)]:mt-6">{priorityLabel[cardData.priority]}</p>
-        </div>
+        {cardData.priority && (
+          <div className={`rounded-md border px-1 text-sm ${priorityColor[cardData.priority]}`}>
+            <p className="leading-7">{priorityLabel[cardData.priority]}</p>
+          </div>
+        )}
       </CardHeader>
       <CardContent className="flex justify-between">
         <div className="flex gap-2">
-          <div className={`rounded-md border px-1 text-sm ${categoryColor[cardData.category]}`}>
-            <p className="leading-7 [&:not(:first-child)]:mt-6">
-              {categoryLabel[cardData.category]}
-            </p>
-          </div>
-          <div className={`rounded-md border px-1 text-sm ${statusColor[cardData.status]}`}>
-            <p className="leading-7 [&:not(:first-child)]:mt-6">{statusLabel[cardData.status]}</p>
-          </div>
+          {cardData.category && (
+            <div className={`rounded-md border px-1 text-sm ${categoryColor[cardData.category]}`}>
+              <p className="leading-7 [&:not(:first-child)]:mt-6">
+                {categoryLabel[cardData.category]}
+              </p>
+            </div>
+          )}
+          {cardData.status && (
+            <div className={`rounded-md border px-1 text-sm ${statusColor[cardData.status]}`}>
+              <p className="leading-7 [&:not(:first-child)]:mt-6">{statusLabel[cardData.status]}</p>
+            </div>
+          )}
         </div>
         <CardAction>
           <Button onClick={() => onEditButton()} variant="outline" className="cursor-pointer">
