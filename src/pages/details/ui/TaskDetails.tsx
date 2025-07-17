@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTaskById, updateTask } from '@/features/tasksSlice';
-import type { RootState } from '@/store/store';
-import type { IData } from '@/types/types';
-import TaskForm from './TaskForm';
+import { getTaskById, updateTask } from '@/entities/task/model';
+import type { IData } from '@/shared/model/types';
+import { TaskForm } from '@/entities/task';
+import type { RootState } from '@/app/store';
 
-function TaskDetails() {
+export function TaskDetails() {
   const { id } = useParams();
   const taskId = Number(id);
   const navigate = useNavigate();
@@ -33,5 +33,3 @@ function TaskDetails() {
     </div>
   );
 }
-
-export default TaskDetails;

@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux';
-import TaskItem from './TaskItem';
-import { getTasks } from '@/features/tasksSlice';
-import CreateTaskButton from './CreateTaskButton';
+import { getTasks } from '@/entities/task/model';
+import { CreateTaskButton, TaskItem } from '@/entities/task';
 
-function TaskList() {
+export function TaskList() {
   const tasks = useSelector(getTasks);
 
   return (
@@ -22,5 +21,3 @@ function TaskList() {
     </div>
   );
 }
-
-export default TaskList;

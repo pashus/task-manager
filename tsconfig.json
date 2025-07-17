@@ -11,7 +11,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@app/": ["./src/app/*"],
+      "@pages/": ["./src/pages/*"],
+      "@entities/": ["./src/entities/*"],
+      "@shared/": ["./src/shared/*"]
     }
   }
 }

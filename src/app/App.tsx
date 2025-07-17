@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import TaskList from './components/TaskList';
-import TaskDetails from './components/TaskDetails';
-import TaskNew from './components/TaskNew';
+import { TaskNew } from '@/pages/new';
+import { TaskList } from '@/pages/list';
+import { TaskDetails } from '@/pages/details';
 
 function App() {
   return (

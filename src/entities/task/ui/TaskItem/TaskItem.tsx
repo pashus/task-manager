@@ -5,8 +5,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Button } from './ui/button';
+} from '@/shared/ui/card';
 import {
   categoryColor,
   categoryLabel,
@@ -14,14 +13,15 @@ import {
   priorityLabel,
   statusColor,
   statusLabel,
-} from '@/constants/constatns';
+} from '@/shared/model/constatns';
 import { useNavigate } from 'react-router-dom';
-import type { IData } from '@/types/types';
 import { useDispatch } from 'react-redux';
-import { deleteTask } from '@/features/tasksSlice';
+import { deleteTask } from '@/entities/task/model';
 import { Edit, Trash } from '@mynaui/icons-react';
+import { Button } from '@/shared/ui/button';
+import type { IData } from '@/shared/model';
 
-function TaskItem({ cardData }: { cardData: IData }) {
+export function TaskItem({ cardData }: { cardData: IData }) {
   const navigate = useNavigate();
   const id = cardData.id;
 
@@ -89,5 +89,3 @@ function TaskItem({ cardData }: { cardData: IData }) {
     </Card>
   );
 }
-
-export default TaskItem;

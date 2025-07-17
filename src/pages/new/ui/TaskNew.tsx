@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
-import TaskForm from './TaskForm';
-import { createTask } from '@/features/tasksSlice';
+import { createTask } from '@/entities/task/model';
 import { useNavigate } from 'react-router-dom';
-import type { IData } from '@/types/types';
+import type { IData } from '@/shared/model/types';
+import { TaskForm } from '@/entities/task';
 
-function TaskNew() {
+export function TaskNew() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,5 +26,3 @@ function TaskNew() {
     </div>
   );
 }
-
-export default TaskNew;

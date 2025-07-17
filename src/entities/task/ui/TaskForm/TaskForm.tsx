@@ -1,8 +1,8 @@
-import type { Category, Status, Priority, IData } from '@/types/types';
+import type { Category, Status, Priority, IData } from '@/shared/model/types';
 import { useEffect, useState } from 'react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
+import { Button } from '@/shared/ui/button';
+import { Input } from '@/shared/ui/input';
+import { Label } from '@/shared/ui/label';
 import {
   Select,
   SelectContent,
@@ -11,7 +11,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from './ui/select';
+} from '@/shared/ui/select';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {
@@ -19,7 +19,7 @@ interface Props {
   onSubmit: (data: Omit<IData, 'id'>) => void;
 }
 
-function TaskForm({ onSubmit, task }: Props) {
+export function TaskForm({ onSubmit, task }: Props) {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
@@ -149,5 +149,3 @@ function TaskForm({ onSubmit, task }: Props) {
     </div>
   );
 }
-
-export default TaskForm;

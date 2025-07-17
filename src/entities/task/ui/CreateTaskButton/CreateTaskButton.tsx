@@ -1,7 +1,7 @@
+import { Button } from '@/shared/ui/button';
 import { useNavigate } from 'react-router-dom';
-import { Button } from './ui/button';
 
-function CreateTaskButton() {
+export function CreateTaskButton() {
   const navigate = useNavigate();
   function handleOpenCreateForm() {
     navigate('task/new');
@@ -13,5 +13,3 @@ function CreateTaskButton() {
     </Button>
   );
 }
-
-export default CreateTaskButton;
