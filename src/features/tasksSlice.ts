@@ -1,5 +1,4 @@
 import type { IData } from '@/types/types';
-import data from '@/data/data';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface ITasksState {
@@ -7,7 +6,48 @@ interface ITasksState {
 }
 
 const initialState: ITasksState = {
-  tasks: data,
+  tasks: [
+    {
+      id: 1,
+      title: 'Card',
+      description: 'Some description',
+      category: 'test',
+      status: 'inProgress',
+      priority: 'high',
+    },
+    {
+      id: 2,
+      title: 'Card 2',
+      description: 'Another descriptionAnother descriptionAnother descriptionAnother description',
+      category: 'feature',
+      status: 'done',
+      priority: 'low',
+    },
+    {
+      id: 3,
+      title: 'Card 3',
+      description: 'Another description',
+      category: 'test',
+      status: 'todo',
+      priority: 'low',
+    },
+    {
+      id: 4,
+      title: 'Card 4',
+      description: 'Another description',
+      category: 'documentation',
+      status: 'inProgress',
+      priority: 'medium',
+    },
+    {
+      id: 5,
+      title: 'Card 5',
+      description: 'Another description',
+      category: 'refactor',
+      status: 'done',
+      priority: 'low',
+    },
+  ],
 };
 
 const tasksSlice = createSlice({
@@ -25,7 +65,9 @@ const tasksSlice = createSlice({
       state.tasks.push(action.payload);
     },
 
-    deleteTask(state, action: PayloadAction<IData>) {},
+    deleteTask(state, action: PayloadAction<number>) {
+      state.tasks = state.tasks.filter((i) => i.id !== action.payload);
+    },
   },
   selectors: {
     getTasks: (state) => {

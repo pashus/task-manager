@@ -17,13 +17,22 @@ import {
 } from '@/constants/constatns';
 import { useNavigate } from 'react-router-dom';
 import type { IData } from '@/types/types';
+import { useDispatch } from 'react-redux';
+import { deleteTask } from '@/features/tasksSlice';
+import { Edit, Trash } from '@mynaui/icons-react';
 
 function TaskItem({ cardData }: { cardData: IData }) {
   const navigate = useNavigate();
   const id = cardData.id;
 
+  const dispatch = useDispatch();
+
   function onEditButton() {
     navigate(`/task/${id}`);
+  }
+
+  function onDeleteButton() {
+    dispatch(deleteTask(id));
   }
 
   return (
@@ -37,7 +46,9 @@ function TaskItem({ cardData }: { cardData: IData }) {
         </div>
         {cardData.priority && (
           <div className={`rounded-md border px-1 text-sm ${priorityColor[cardData.priority]}`}>
-            <p className="leading-7">{priorityLabel[cardData.priority]}</p>
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
+              {priorityLabel[cardData.priority]}
+            </p>
           </div>
         )}
       </CardHeader>
@@ -56,9 +67,22 @@ function TaskItem({ cardData }: { cardData: IData }) {
             </div>
           )}
         </div>
-        <CardAction>
-          <Button onClick={() => onEditButton()} variant="outline" className="cursor-pointer">
-            Edit
+        <CardAction className="flex gap-1">
+          <Button
+            size="sm"
+            onClick={() => onEditButton()}
+            variant="outline"
+            className="cursor-pointer"
+          >
+            <Edit />
+          </Button>
+          <Button
+            size="sm"
+            onClick={onDeleteButton}
+            variant="destructive"
+            className="cursor-pointer bg-red-500"
+          >
+            <Trash />
           </Button>
         </CardAction>
       </CardContent>
