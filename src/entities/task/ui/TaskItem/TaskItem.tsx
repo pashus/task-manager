@@ -35,6 +35,11 @@ export function TaskItem({ cardData }: { cardData: IData }) {
     dispatch(deleteTask(id));
   }
 
+  function formatDate(date: string) {
+    const [year, month, day] = date.split('-');
+    return `${day}-${month}-${year}`;
+  }
+
   return (
     <Card>
       <CardHeader className="flex justify-between">
@@ -44,6 +49,7 @@ export function TaskItem({ cardData }: { cardData: IData }) {
             {cardData.description}
           </CardDescription>
         </div>
+        <p className="text-sm leading-7">{formatDate(cardData.date)}</p>
         {cardData.priority && (
           <div className={`rounded-md border px-1 text-sm ${priorityColor[cardData.priority]}`}>
             <p className="leading-7 [&:not(:first-child)]:mt-6">

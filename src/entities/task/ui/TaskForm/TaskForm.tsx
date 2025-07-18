@@ -27,6 +27,7 @@ export function TaskForm({ onSubmit, task }: Props) {
   const [category, setCategory] = useState<Category | ''>('');
   const [status, setStatus] = useState<Status | ''>('');
   const [priority, setPriority] = useState<Priority | ''>('');
+  const [date, setDate] = useState(() => getTodayDate());
 
   useEffect(() => {
     if (task) {
@@ -35,12 +36,22 @@ export function TaskForm({ onSubmit, task }: Props) {
       setCategory(task.category);
       setStatus(task.status);
       setPriority(task.priority);
+      setDate(task.date);
     }
   }, [task]);
 
-  const handleSave = () => {
-    onSubmit({ title, description, category, status, priority });
-  };
+  function getTodayDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  function handleSave() {
+    onSubmit({ title, description, category, status, priority, date });
+    console.log(date);
+  }
 
   return (
     <div>
@@ -132,6 +143,18 @@ export function TaskForm({ onSubmit, task }: Props) {
               </SelectGroup>
             </SelectContent>
           </Select>
+        </div>
+        <div className="flex flex-col gap-2">
+          <Label className="font-semibold" htmlFor="date">
+            Date
+          </Label>
+          <Input
+            value={date}
+            id="date"
+            type="date"
+            placeholder="Date"
+            onChange={(e) => setDate(e.target.value)}
+          />
         </div>
       </form>
       <div className="flex gap-2">

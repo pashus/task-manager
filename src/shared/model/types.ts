@@ -9,4 +9,5 @@ export interface IData {
   category: Category | '';
   status: Status | '';
   priority: Priority | '';
+  date: string;
 }

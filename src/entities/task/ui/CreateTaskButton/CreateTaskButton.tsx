@@ -8,7 +8,7 @@ export function CreateTaskButton() {
   }
 
   return (
-    <Button onClick={handleOpenCreateForm} className="cursor-pointer">
+    <Button onClick={handleOpenCreateForm} className="w-76 cursor-pointer self-center sm:w-25">
       Create task
     </Button>
   );
