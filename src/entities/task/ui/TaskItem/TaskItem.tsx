@@ -15,17 +15,17 @@ import {
   statusLabel,
 } from '@/shared/model/constatns';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { deleteTask } from '@/entities/task/model';
 import { Edit, Trash } from '@mynaui/icons-react';
 import { Button } from '@/shared/ui/button';
 import type { IData } from '@/shared/model';
+import { useAppDispatch } from '@/app/store';
 
 export function TaskItem({ cardData }: { cardData: IData }) {
   const navigate = useNavigate();
   const id = cardData.id;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function onEditButton() {
     navigate(`/task/${id}`);
