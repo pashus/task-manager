@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
   task?: IData;
-  onSubmit: (data: Omit<IData, 'id'>) => void;
+  onSubmit: (data: IData) => void;
 }
 
 export function TaskForm({ onSubmit, task }: Props) {
@@ -49,8 +49,7 @@ export function TaskForm({ onSubmit, task }: Props) {
   }
 
   function handleSave() {
-    onSubmit({ title, description, category, status, priority, date });
-    console.log(date);
+    onSubmit({ title, description, category, status, priority, date } as IData);
   }
 
   return (

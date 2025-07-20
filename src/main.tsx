@@ -5,6 +5,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './app/App.tsx';
 import { store } from './app/store';
+import { makeServer } from './entities/task/index.ts';
+
+makeServer();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

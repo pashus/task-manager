@@ -1,11 +1,11 @@
-import { useDispatch } from 'react-redux';
 import { createTask } from '@/entities/task/model';
 import { useNavigate } from 'react-router-dom';
 import type { IData } from '@/shared/model/types';
 import { TaskForm } from '@/entities/task';
+import { useAppDispatch } from '@/app/store/store';
 
 export function TaskNew() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   function handleSaveTask(data: Omit<IData, 'id'>) {
@@ -14,6 +14,7 @@ export function TaskNew() {
       ...data,
     };
     dispatch(createTask(newTask));
+
     navigate('/');
   }
 

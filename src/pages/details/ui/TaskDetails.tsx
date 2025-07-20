@@ -1,24 +1,24 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { getTaskById, updateTask } from '@/entities/task/model';
 import type { IData } from '@/shared/model/types';
 import { TaskForm } from '@/entities/task';
 import type { RootState } from '@/app/store';
+import { useAppDispatch, useAppSelector } from '@/app/store/store';
 
 export function TaskDetails() {
   const { id } = useParams();
   const taskId = Number(id);
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const task = useSelector((state: RootState) => getTaskById(state, taskId));
+  const dispatch = useAppDispatch();
+  const task = useAppSelector((state: RootState) => getTaskById(state, taskId));
 
-  function handleSaveTask(data: Omit<IData, 'id'>) {
+  function handleSaveTask(data: IData) {
     if (!task) return;
     dispatch(
       updateTask({
-        ...task,
         ...data,
+        id: task.id,
       })
     );
     navigate('/');

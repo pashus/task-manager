@@ -7,4 +7,13 @@ export {
   TaskForm,
   CreateTaskButton,
 } from './ui';
-export { tasksReducer, updateTask, createTask, deleteTask, getTasks, getTaskById } from './model';
+export {
+  makeServer,
+  tasksReducer,
+  updateTask,
+  createTask,
+  deleteTask,
+  getTasks,
+  getLoading,
+  getTaskById,
+} from './model';

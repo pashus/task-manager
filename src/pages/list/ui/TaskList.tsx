@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { getTasks } from '@/entities/task/model';
 import {
   CategoryFilterSelect,
@@ -8,10 +7,17 @@ import {
   StatusFilterSelect,
   TaskItem,
 } from '@/entities/task';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/app/store/store';
+import { fetchTasks } from '@/entities/task/model/tasksSlice';
 
 export function TaskList() {
-  const tasks = useSelector(getTasks);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, []);
+
+  const tasks = useAppSelector(getTasks);
   const [priority, setPriority] = useState('');
   const [status, setStatus] = useState('');
   const [category, setCategory] = useState('');
