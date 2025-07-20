@@ -9,13 +9,13 @@ export function makeServer() {
         return JSON.parse(localStorage.getItem('tasks') || '[]');
       });
 
-      this.get('/tasks/:id', (schema, request) => {
+      this.get('/tasks/:id', (_, request) => {
         const id = +request.params.id;
         const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
         return tasks.find((t: any) => t.id === id);
       });
 
-      this.post('/tasks', (schema, request) => {
+      this.post('/tasks', (_, request) => {
         const task = JSON.parse(request.requestBody);
         const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
         tasks.push(task);
@@ -23,7 +23,7 @@ export function makeServer() {
         return task;
       });
 
-      this.put('/tasks/:id', (schema, request) => {
+      this.put('/tasks/:id', (_, request) => {
         const id = +request.params.id;
         const updated = JSON.parse(request.requestBody);
         let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
@@ -32,7 +32,7 @@ export function makeServer() {
         return updated;
       });
 
-      this.delete('/tasks/:id', (schema, request) => {
+      this.delete('/tasks/:id', (_, request) => {
         const id = +request.params.id;
         const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
         const filtered = tasks.filter((t: any) => t.id !== id);
